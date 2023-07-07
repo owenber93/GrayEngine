@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{d74825a7-f4aa-4932-a58f-1269492c4ac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Source">
+      <UniqueIdentifier>{17f78a8a-fd44-41da-b25a-a2df3883f81f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Headers">
+      <UniqueIdentifier>{e1166c26-01a1-477c-8222-a6eca64d87fa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Headers\Engine.h" />
+    <ClInclude Include="GrayEngine.h" />
+    <ClInclude Include="Engine\Headers\Core\Logger.h" />
+    <ClInclude Include="Engine\Headers\Virtual\AppWindow.h" />
+    <ClInclude Include="Engine\Headers\GL_App.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Engine\Headers\Core\EventListener.h" />
+    <ClInclude Include="Vulkan\VulkanDrawable.h" />
+    <ClInclude Include="Vulkan\VulkanAPI.h" />
+    <ClInclude Include="Engine\Headers\Virtual\Renderer.h" />
+    <ClInclude Include="Engine\Headers\Core\Core.h" />
+    <ClInclude Include="Engine\Headers\Entities\Camera.h" />
+    <ClInclude Include="Engine\Headers\Entities\Entity.h" />
+    <ClInclude Include="Engine\Headers\Core\Globals.h" />
+    <ClInclude Include="Engine\Headers\Virtual\Physics.h" />
+    <ClInclude Include="Bullet\BulletAPI.h" />
+    <ClInclude Include="Engine\Headers\Entities\Properties\Property.h" />
+    <ClInclude Include="Engine\Headers\Entities\Skybox.h" />
+    <ClInclude Include="Vulkan\VulkanSkybox.h" />
+    <ClInclude Include="Vulkan\VulkanObject.h" />
+    <ClInclude Include="Vulkan\VulkanResourceManager.h" />
+    <ClInclude Include="Engine\Headers\Entities\Terrain.h" />
+    <ClInclude Include="Vulkan\VulkanTerrain.h" />
+    <ClInclude Include="Vulkan\VulkanRenderer.h" />
+    <ClInclude Include="Engine\Headers\Entities\Properties\Drawable.h" />
+    <ClInclude Include="Engine\Headers\Entities\Properties\Light.h" />
+    <ClInclude Include="Vulkan\VulkanSpotlight.h" />
+    <ClInclude Include="Vulkan\VulkanCascade.h" />
+    <ClInclude Include="Engine\Headers\Virtual\PhysicsObject.h" />
+    <ClInclude Include="Engine\Headers\Virtual\ResourceManager.h" />
+    <ClInclude Include="Bullet\BulletResourceManager.h" />
+    <ClInclude Include="Vulkan\VulkanPointLight.h" />
+    <ClInclude Include="Vulkan\VulkanOmniLight.h" />
+    <ClInclude Include="Engine\Headers\Virtual\MovementComponent.h" />
+    <ClInclude Include="Bullet\BulletPhysicsObject.h" />
+    <ClInclude Include="Bullet\BulletMovementComponent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\Source\GL_App.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Engine\Source\Engine.cpp" />
+    <ClCompile Include="Vulkan\VulkanDrawable.cpp" />
+    <ClCompile Include="Vulkan\VulkanAPI.cpp" />
+    <ClCompile Include="Engine\Source\Globals.cpp" />
+    <ClCompile Include="Bullet\BulletAPI.cpp" />
+    <ClCompile Include="Engine\Headers\Entities\Properties\Property.cpp" />
+    <ClCompile Include="Vulkan\VulkanSkybox.cpp" />
+    <ClCompile Include="Vulkan\VulkanObject.cpp" />
+    <ClCompile Include="Vulkan\VulkanResourceManager.cpp" />
+    <ClCompile Include="Vulkan\VulkanTerrain.cpp" />
+    <ClCompile Include="Vulkan\VulkanRenderer.cpp" />
+    <ClCompile Include="Vulkan\VulkanSpotlight.cpp" />
+    <ClCompile Include="Vulkan\VulkanCascade.cpp" />
+    <ClCompile Include="Bullet\BulletResourceManager.cpp" />
+    <ClCompile Include="Vulkan\VulkanPointLight.cpp" />
+    <ClCompile Include="Vulkan\VulkanOmniLight.cpp" />
+    <ClCompile Include="Engine\Source\Entity.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\Libs\lib-vc2019\glfw3.dll" />
+    <None Include="Engine\Source\Vulkan\Shaders\Compiler.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Engine\Libs\lib-vc2019\glfw3.lib" />
+    <Library Include="Engine\Libs\lib-vc2019\glfw3_mt.lib" />
+    <Library Include="Engine\Libs\lib-vc2019\glfw3dll.lib" />
+    <Library Include="Engine\Libs\Lib\vulkan-1.lib" />
+  </ItemGroup>
+</Project>

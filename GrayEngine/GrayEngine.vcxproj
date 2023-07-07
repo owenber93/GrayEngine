@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bullet\BulletMovementComponent.h" />
+    <ClInclude Include="Bullet\BulletPhysicsObject.h" />
+    <ClInclude Include="Bullet\BulletResourceManager.h" />
+    <ClInclude Include="Bullet\BulletAPI.h" />
+    <ClInclude Include="Engine\Headers\Entities\Properties\Drawable.h" />
+    <ClInclude Include="Engine\Headers\Virtual\MovementComponent.h" />
+    <ClInclude Include="Engine\Headers\Entities\Properties\Property.h" />
+    <ClInclude Include="Engine\Headers\Entities\Properties\Light.h" />
+    <ClInclude Include="Engine\Headers\Entities\Skybox.h" />
+    <ClInclude Include="Engine\Headers\Virtual\AppWindow.h" />
+    <ClInclude Include="Engine\Headers\Entities\Camera.h" />
+    <ClInclude Include="Engine\Headers\Core\Core.h" />
+    <ClInclude Include="Engine\Headers\Entities\Entity.h" />
+    <ClInclude Include="Engine\Headers\Core\Globals.h" />
+    <ClInclude Include="Engine\Headers\Virtual\PhysicsObject.h" />
+    <ClInclude Include="Engine\Headers\Virtual\Renderer.h" />
+    <ClInclude Include="Engine\Headers\Entities\Terrain.h" />
+    <ClInclude Include="Engine\Headers\Virtual\ResourceManager.h" />
+    <ClInclude Include="Vulkan\VulkanOmniLight.h" />
+    <ClInclude Include="Vulkan\VulkanPointLight.h" />
+    <ClInclude Include="Vulkan\VulkanCascade.h" />
+    <ClInclude Include="Vulkan\VulkanSpotlight.h" />
+    <ClInclude Include="Vulkan\VulkanRenderer.h" />
+    <ClInclude Include="Vulkan\VulkanTerrain.h" />
+    <ClInclude Include="Vulkan\VulkanResourceManager.h" />
+    <ClInclude Include="Vulkan\VulkanObject.h" />
+    <ClInclude Include="Vulkan\VulkanSkybox.h" />
+    <ClInclude Include="Vulkan\VulkanDrawable.h" />
+    <ClInclude Include="Vulkan\VulkanAPI.h" />
+    <ClInclude Include="GrayEngine.h" />
+    <ClInclude Include="Engine\Headers\Engine.h" />
+    <ClInclude Include="Engine\Headers\Core\Logger.h" />
+    <ClInclude Include="Engine\Headers\GL_App.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Engine\Headers\Core\EventListener.h" />
+    <ClInclude Include="Engine\Headers\Virtual\Physics.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Bullet\BulletResourceManager.cpp" />
+    <ClCompile Include="Bullet\BulletAPI.cpp" />
+    <ClCompile Include="Engine\Headers\Entities\Properties\Property.cpp" />
+    <ClCompile Include="Engine\Source\Engine.cpp" />
+    <ClCompile Include="Engine\Source\Entity.cpp" />
+    <ClCompile Include="Engine\Source\Globals.cpp" />
+    <ClCompile Include="Vulkan\VulkanOmniLight.cpp" />
+    <ClCompile Include="Vulkan\VulkanPointLight.cpp" />
+    <ClCompile Include="Vulkan\VulkanCascade.cpp" />
+    <ClCompile Include="Vulkan\VulkanSpotlight.cpp" />
+    <ClCompile Include="Vulkan\VulkanRenderer.cpp" />
+    <ClCompile Include="Vulkan\VulkanTerrain.cpp" />
+    <ClCompile Include="Vulkan\VulkanResourceManager.cpp" />
+    <ClCompile Include="Vulkan\VulkanObject.cpp" />
+    <ClCompile Include="Vulkan\VulkanSkybox.cpp" />
+    <ClCompile Include="Vulkan\VulkanDrawable.cpp" />
+    <ClCompile Include="Vulkan\VulkanAPI.cpp" />
+    <ClCompile Include="Engine\Source\GL_App.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\Source\Vulkan\Shaders\Compiler.bat" />
+    <None Include="Engine\Libs\lib-vc2019\glfw3.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Engine\Libs\lib-vc2019\glfw3.lib" />
+    <Library Include="Engine\Libs\lib-vc2019\glfw3dll.lib" />
+    <Library Include="Engine\Libs\lib-vc2019\glfw3_mt.lib" />
+    <Library Include="Engine\Libs\Lib\vulkan-1.lib" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{09b090db-489d-407c-becc-f8dc49c6fcc1}</ProjectGuid>
+    <RootNamespace>GrayEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)\other\bin\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)\other\bin\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>DllExport;SOLUTION_DIR=R"($(SolutionDir))";_DEBUG;_CONSOLE;%(PreprocessorDefinitions);TP_Windows;TP_Windows;BD_DllSOLUTION_DIR=R"($(SolutionDir))"</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)GrayEngine\Engine\Libs\IncludeBullet;$(SolutionDir)GrayEngine\Engine\Libs\IncludeVK;$(SolutionDir)GrayEngine\Engine\Libs\includeGL;$(SolutionDir)GrayEngine\Engine\Libs\IncludeAssimp;$(SolutionDir)GrayEngine\Engine\Libs\glm;$(SolutionDir)GrayEngine\Engine\Libs\VkMemAlloc;$(SolutionDir)GrayEngine\Engine\Libs\TexLoader;%(AdditionalIncludeDirectories);$(SolutionDir)GrayEngine\Engine\Headers;$(SolutionDir)GrayEngine</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)GrayEngine\Engine\Libs\Lib;$(SolutionDir)GrayEngine\Engine\Libs\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>BulletCollision_Debug.lib;BulletDynamics_Debug.lib;LinearMath_Debug.lib;glfw3.lib;vulkan-1.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\GrayEngine.dll" "$(SolutionDir)\bin\$(Configuration)-$(Platform)\WorldEditorApp\"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>DllExport;SOLUTION_DIR=R"($(SolutionDir))";NDEBUG;_CONSOLE;%(PreprocessorDefinitions);TP_Windows;TP_Windows;BD_DllSOLUTION_DIR=R"($(SolutionDir))"</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)GrayEngine\Engine\Libs\IncludeBullet;$(SolutionDir)GrayEngine\Engine\Libs\IncludeVK;$(SolutionDir)GrayEngine\Engine\Libs\includeGL;$(SolutionDir)GrayEngine\Engine\Libs\IncludeAssimp;$(SolutionDir)GrayEngine\Engine\Libs\glm;$(SolutionDir)GrayEngine\Engine\Libs\VkMemAlloc;$(SolutionDir)GrayEngine\Engine\Libs\TexLoader;%(AdditionalIncludeDirectories);$(SolutionDir)GrayEngine\Engine\Headers;$(SolutionDir)GrayEngine</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)GrayEngine\Engine\Libs\Lib;$(SolutionDir)GrayEngine\Engine\Libs\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>BulletCollision_Release.lib;BulletDynamics_Release.lib;LinearMath_Release.lib;glfw3.lib;vulkan-1.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)\bin\$(Configuration)-$(Platform)\$(ProjectName)\GrayEngine.dll" "$(SolutionDir)\bin\$(Configuration)-$(Platform)\WorldEditorApp\"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

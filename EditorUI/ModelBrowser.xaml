@@ -1,0 +1,210 @@
+﻿<Window x:Name="MdlBrowser" x:Class="EditorUI.ModelBrowser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EditorUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Title="GRay Engine: Model Browser" WindowStartupLocation="CenterScreen" Closing="MdlBrowser_Closing" SizeChanged="MdlBrowser_SizeChanged" Closed="MdlBrowser_Closed">
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border 
+                                Name="Border"
+                                Margin="0,0,-4,0" 
+                                Background="#FF23232C"
+                                BorderThickness="0,0,0,0" 
+                                CornerRadius="2,12,0,0" >
+                                <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="12,2,12,2"
+                                    RecognizesAccessKey="True"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="Background" Value="#FF353538" />
+                                <Setter Property="Foreground" Value="WhiteSmoke" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF292A30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Name="MainColumn" MinWidth="150" Width="0.3*"/>
+            <ColumnDefinition MinWidth="150"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Name="TabCtr" Background="#FF343440" Grid.Column="0" BorderBrush="{x:Null}" MinWidth="150" SelectionChanged="TabCtr_SelectionChanged">
+            <TabItem Background="{x:Null}" Header="Browse" Foreground="WhiteSmoke" BorderBrush="{x:Null}">
+                <DockPanel Background="#FF353538" LastChildFill="True">
+                    <DockPanel DockPanel.Dock="Top" Height="25" LastChildFill="True">
+                        <Button Name="ExpandBtn" Content="+" Width="30" Foreground="WhiteSmoke" DockPanel.Dock="Right" Height="25" Background="#FF1E1E21" Cursor="Hand" Click="ExpandBtn_Click" ToolTip="Expand path" BorderBrush="{x:Null}" Padding="1" BorderThickness="1">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderThickness="0,1,1,0" BorderBrush="#FFABADB3" Padding="1">
+                                                    <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,2"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{x:Null}"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Name="RefreshButton" Content="O" DockPanel.Dock="Right" Click="Button_Click"  Width="30" Foreground="WhiteSmoke" Height="25" Background="#FF1E1E21" Cursor="Hand" ToolTip="Refresh" BorderBrush="{x:Null}" Padding="1" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderThickness="0,1,0,0" BorderBrush="#FFABADB3" Padding="1">
+                                                    <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,2"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{x:Null}"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Name="MeshNameBar" Content="Name" HorizontalContentAlignment="Left" Foreground="WhiteSmoke" DockPanel.Dock="Left" Height="25" Background="#FF1E1E21" Click="MeshNameBar_Click" Cursor="Hand" ToolTip="Order by">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderThickness="0,1,0,0" BorderBrush="#FFABADB3" Padding="1">
+                                                    <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="{x:Null}"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </DockPanel>
+                    <TextBox IsUndoEnabled="False" Text="Search..." Name="SearchBar"  DockPanel.Dock="Bottom" Height="25" BorderThickness="1,1,1,1" BorderBrush="#FFABADB3" Background="#FF232329" Foreground="WhiteSmoke" TextChanged="SearchBar_TextChanged" GotFocus="SearchBar_GotFocus" LostFocus="SearchBar_LostFocus" VerticalContentAlignment="Center" Padding="5,0" TabIndex="1"/>
+                    <ListView Name="Browser" Background="#FF242427" Foreground="WhiteSmoke" SelectionChanged="Browser_SelectionChanged">
+
+                    </ListView>
+                </DockPanel>
+            </TabItem>
+            <TabItem Background="{x:Null}" Header="Create/Edit" Foreground="WhiteSmoke" BorderBrush="{x:Null}">
+                <Border Background="#FF353538" BorderThickness="1,1,1,1" BorderBrush="#FFABADB3" Padding="1,1,1,1">
+                    <DockPanel Background="#FF242427">
+                        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="#FFABADB3" Padding="0,1,0,0" Background="#FF1E1E21">
+                            <Label Content="Name" HorizontalContentAlignment="Center" FontFamily="Lucida Sans Unicode" TextOptions.TextHintingMode="Fixed" Background="{x:Null}" Foreground="WhiteSmoke" Margin="0"/>
+                        </Border>
+                        <TextBox IsUndoEnabled="True" Name="IdBox" IsEnabled="True" Height="25" DockPanel.Dock="Top" Text="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextWrapping="NoWrap" Foreground="#FF8B8B8B" Background="{x:Null}" SelectionBrush="#FF2D6FA6" BorderBrush="{x:Null}" TabIndex="2" CaretBrush="#FFB4B4B4" GotFocus="IdBox_GotFocus" LostFocus="IdBox_LostFocus"/>
+                        <Button Name="BtnCreate" Height="25" Content="Save preset" Background="#FF5D5D5D" BorderBrush="#FFC8C8C8" BorderThickness="1" Margin="5" Foreground="WhiteSmoke" FontFamily="Lucida Sans Unicode" TextOptions.TextHintingMode="Fixed" Padding="2" Cursor="Hand" Click="BtnCreate_Click" DockPanel.Dock="Bottom"/>
+                        <Border DockPanel.Dock="Top" BorderThickness="0,1,0,1" BorderBrush="#FFABADB3" Padding="0,1,0,0" Background="#FF1E1E21">
+                            <Grid Margin="0,0,0,1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1" Content="Mesh" HorizontalContentAlignment="Center" FontFamily="Lucida Sans Unicode" TextOptions.TextHintingMode="Fixed" Background="{x:Null}" Foreground="WhiteSmoke" Margin="0"/>
+                                <Button Name="BtnLoadMdl" Content="≡" Grid.Column="2" Width="20" Click="BtnLoadMdl_Click" Grid.Row="0" BorderBrush="{x:Null}" BorderThickness="0,0,1,1" Cursor="Hand" FontFamily="Lucida Sans Unicode" TextOptions.TextHintingMode="Fixed" Background="{x:Null}" FontSize="14" FontWeight="Bold" ToolTip="Load mesh file">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Background" Value="{x:Null}"/>
+                                            <Setter Property="Foreground" Value="LightGray"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border Background="{TemplateBinding Background}">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{x:Null}"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Grid>
+                        </Border>
+                        <TextBox IsUndoEnabled="False" Name="MeshPath" DockPanel.Dock="Top" Foreground="#FFB9B9D1" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" SelectionBrush="#FF44434B" IsReadOnly="True" IsReadOnlyCaretVisible="False" Margin="0,5" MaxLines="1" />
+                        <Border DockPanel.Dock="Top" BorderThickness="0,1,0,1" BorderBrush="#FFABADB3" Padding="0,1,0,0" Background="#FF1E1E21">
+                            <Grid Margin="0,0,0,1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1" Content="Collision mesh" HorizontalContentAlignment="Center" FontFamily="Lucida Sans Unicode" TextOptions.TextHintingMode="Fixed" Background="{x:Null}" Foreground="WhiteSmoke" Margin="0"/>
+                                <Button Name="BtnLoadCol" Content="≡" Grid.Column="2" Width="20" Click="BtnLoadCol_Click" Grid.Row="0" BorderBrush="{x:Null}" BorderThickness="0,0,1,1" Cursor="Hand" FontFamily="Lucida Sans Unicode" TextOptions.TextHintingMode="Fixed" Background="{x:Null}" FontSize="14" FontWeight="Bold" ToolTip="Load mesh file">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Background" Value="{x:Null}"/>
+                                            <Setter Property="Foreground" Value="LightGray"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border Background="{TemplateBinding Background}">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{x:Null}"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Grid>
+                        </Border>
+                        <TextBox IsUndoEnabled="False" Name="ColPath" DockPanel.Dock="Top" Foreground="#FFB9B9D1" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" SelectionBrush="#FF44434B" IsReadOnly="True" IsReadOnlyCaretVisible="False" Margin="0,5" />
+                        <Label DockPanel.Dock="Top" Content="Materials" HorizontalContentAlignment="Center" FontFamily="Lucida Sans Unicode" TextOptions.TextHintingMode="Fixed" Background="#FF1E1E21" BorderThickness="0,1,0,1" BorderBrush="#FFABADB3" Foreground="WhiteSmoke"/>
+                        <Border Padding="0,0,0,1" BorderThickness="0,0,0,1" BorderBrush="#FFABADB3">
+                            <DockPanel Name="MaterialsPanel" LastChildFill="False" Background="#FF242427"/>
+                        </Border>
+                    </DockPanel>
+                </Border>
+            </TabItem>
+        </TabControl>
+        <GridSplitter Name="GridSplitter" Width="3" Background="#FF292A30" Margin="5,0,0,0" Foreground="{x:Null}" DragDelta="GridSplitter_DragDelta"/>
+        <WindowsFormsHost Name="FormHost" Background="Black" Visibility="Visible" Margin="7,5" Grid.Column="1" SizeChanged="FormHost_SizeChanged"/>
+    </Grid>
+</Window>
